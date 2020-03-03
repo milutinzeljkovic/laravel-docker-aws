@@ -23,9 +23,9 @@ phases:
     - php artisan key:generate
     - echo Building the Docker image...
     - docker-compose build
-    - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+    - docker tag 295523134825.dkr.ecr.us-east-2.amazonaws.com/milutin/laravel-docker-aws:latest 295523134825.dkr.ecr.us-east-2.amazonaws.com/milutin/laravel-docker-aws:$laravel-docker-aws
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push 295523134825.dkr.ecr.us-east-2.amazonaws.com/milutin/laravel-docker-aws:$laravel-docker-aws
