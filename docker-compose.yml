@@ -1,0 +1,35 @@
+version: '3'
+services:
+  laravel-db:
+    image: mariadb:10.2
+    container_name: laravel-db
+    ports:
+        - 3306:3306
+    environment:
+        MYSQL_DATABASE: laravel-docker
+        MYSQL_USER: user
+        MYSQL_PASSWORD: user
+        MYSQL_ROOT_PASSWORD: root
+    volumes:
+        - mysqldata:/var/lib/mysql
+    networks:
+        - boilerplatenet
+  laravel-php:
+    build:
+        context: .
+    container_name: laravel-php
+    ports:
+        - 443:443
+        - 80:80
+    links:
+            - laravel-db:laravel-db
+    volumes:
+        - ./:/app/
+    networks:
+        - boilerplatenet    
+
+volumes:
+  mysqldata:
+
+networks:
+  boilerplatenet:
