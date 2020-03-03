@@ -28,4 +28,4 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push laravel-docker-aws
+      - docker push laravel-docker-aws_laravel-php
